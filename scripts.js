@@ -6,6 +6,9 @@ const pages = document.getElementById('pages');
 const readNotread = document.getElementById('readNotread');
 const submit = document.getElementById('submitIt')
 let placement = 0;
+const deleteIt = document.getElementById("delete")
+let readbuttons;
+
 
 function Book(author, title, pages, read){
     this.author = author;
@@ -16,8 +19,11 @@ function Book(author, title, pages, read){
 
 function addBooktoLibrary(title, author, pages, readNotread){
     let newBook = new Book(title, author, pages, readNotread);
+    
     myLibrary.push(newBook)
     loopArray()
+    document.querySelectorAll(".readButtons")
+    initializeButtons()
 }
 
 function loopArray(){
@@ -36,6 +42,7 @@ function createWrapper(){
         bookTable.appendChild(wrapper);
         const checkbox = document.createElement('input');
         checkbox.type = "checkbox";
+        checkbox.classList.add('id','checkbox')
         wrapper.appendChild(checkbox)
         return(wrapper);
 }
@@ -45,8 +52,15 @@ function appendBooks(key, value, wrapper){
     if (key == 'read'){
         const readButton = document.createElement("button")
         readButton.classList.add('readButtons')
+        if (value == 'Read'){
+            readButton.classList.add('green')
+        }
+        else{
+            readButton.classList.add('red')
+        }
         readButton.textContent = value
         wrapper.appendChild(readButton)
+
     }
     else{
         const bookDetail = document.createElement("span")
@@ -56,8 +70,8 @@ function appendBooks(key, value, wrapper){
 
 }
 
-clearForm(){
-
+function clearForm(){
+    title.value = author.value = pages.value = ""
 }
 
  submit.addEventListener('click', function(e) {
@@ -66,5 +80,35 @@ clearForm(){
      }
      e.preventDefault()
      addBooktoLibrary(title.value, author.value, pages.value, readNotread.value)
+     clearForm()
  })
 
+ deleteIt.addEventListener('click', function() {
+    const x = document.querySelectorAll(".checkbox")
+    x.forEach(deleteEntry)
+ })
+
+ function deleteEntry(item){
+    if (item.checked == true){
+        item.parentNode.remove()
+    }
+ }
+
+function initializeButtons(){
+document.querySelectorAll(".readButtons").forEach(item => {
+    item.addEventListener('click', () => {
+        if (item.textContent == 'Read'){
+            item.textContent = 'Not Read'
+            item.classList.add('red');
+            item.classList.remove('green')
+        }
+        else{
+            item.textContent = 'Read';
+            item.classList.add('green');
+            item.classList.remove('red')
+        }
+    })
+} )
+}
+
+//  x = queryselect('#checked") y = x.parentnode y.remove()
