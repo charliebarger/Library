@@ -78,6 +78,7 @@ h1 {
   padding: 20px;
   margin-top: 0px;
   display: grid;
+
   gap: 20px;
   grid-template-columns: 15px 2fr 2fr 1fr 2fr;
 }
@@ -97,6 +98,14 @@ h1 {
 .delete {
   background-color: red;
   border: 1px solid red;
+}
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+  border: solid green 1px;
 }
 @media screen and (min-width: 700px) {
   .newBookinputs {
@@ -120,7 +129,7 @@ h1 {
     flex: 1;
   }
   .submitbutton {
-    width: 80vw;
+    max-width: 80vw;
   }
   .button1 {
     position: static;
