@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <h1>Virtual Library</h1>
+    <form action="">
+    <section class="newBookinputs">
+        <div class="textInput bookInput">
+            <span>Title</span>
+            <input type="text" id="title" required>
+        </div>
+        <div class="textInput authorInput">
+            <span>Author</span>
+            <input type="text" id="author" required>
+        </div>
+        <div class="numberInput">
+            <div class="numbers">
+                <span>Pages</span>
+                <input type="number" id="pages" required>
+            </div>
+            <div>
+                <label for="Status">Status</label>
+                <select name="Status" id="readNotread">
+                    <option value="Read">Read</option>
+                    <option value="Not Read">Not Read</option>
+                </select>
+            </div>
+        </div>
+    </section>
+    <div class="submitbutton">
+        <input class= "button1" type="submit" id="submitIt">
+    </div>
+</form>
+<section class=" bookheader mybooks">
+        <span></span>
+        <span>Title</span>
+        <span>Author</span>
+        <span>Pages</span>
+        <span>Status</span>
+</section>
+<section class="bookTable">
+</section>
+<div class="submitbutton">
+    <button class="delete button1">Delete</button>
+</div>
+</body>
+<script src="./scripts.js"></script>
+</html>
