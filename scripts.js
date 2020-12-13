@@ -15,15 +15,14 @@ function Book(author, title, pages, read){
     this.title = title
     this.pages = pages
     this.read = read
+    
 }
 
 function addBooktoLibrary(title, author, pages, readNotread){
     let newBook = new Book(title, author, pages, readNotread);
-    
     myLibrary.push(newBook)
     loopArray()
-    document.querySelectorAll(".readButtons")
-    initializeButtons()
+    
 }
 
 function loopArray(){
@@ -49,25 +48,19 @@ function createWrapper(){
 
 
 function appendBooks(key, value, wrapper){
-    if (key == 'read'){
-        const readButton = document.createElement("button")
-        readButton.classList.add('readButtons')
-        if (value == 'Read'){
-            readButton.classList.add('green')
-        }
-        else{
-            readButton.classList.add('red')
-        }
-        readButton.textContent = value
-        wrapper.appendChild(readButton)
-
+    console.log(value)
+    if (value == 'Read'|| value == 'Not Read'){
+            const readButton = document.createElement("button")
+            readButton.classList.add('readButtons')
+            readButton.textContent = value;
+            value == 'Read' ?  readButton.style.background = 'green' :  readButton.style.background = 'red';
+            wrapper.appendChild(readButton)
     }
     else{
         const bookDetail = document.createElement("span")
         bookDetail.textContent = value;
         wrapper.appendChild(bookDetail);
     }
-
 }
 
 function clearForm(){
@@ -94,21 +87,19 @@ function clearForm(){
     }
  }
 
-function initializeButtons(){
-document.querySelectorAll(".readButtons").forEach(item => {
-    item.addEventListener('click', () => {
-        if (item.textContent == 'Read'){
-            item.textContent = 'Not Read'
-            item.classList.add('red');
-            item.classList.remove('green')
+document.addEventListener('click',function(e){
+    if(e.target && e.target.className== 'readButtons'){
+        console.log(e.target.textContent)
+        if(e.target.textContent == 'Read'){
+            e.target.textContent = 'Not Read'
+            e.target.style.background = 'red'
         }
+            
         else{
-            item.textContent = 'Read';
-            item.classList.add('green');
-            item.classList.remove('red')
+            e.target.style.background = 'green'
+            e.target.textContent = 'Read'
+            e.target.style.border = 'solid 1px green'
+            
         }
-    })
-} )
-}
-
-//  x = queryselect('#checked") y = x.parentnode y.remove()
+     }
+ });
