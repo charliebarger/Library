@@ -8,7 +8,7 @@ const submit = document.getElementById('submitIt')
 let placement = 0;
 const deleteIt = document.getElementById("delete")
 let readbuttons;
-
+let wrapper;
 
 function Book(author, title, pages, read){
     this.author = author;
@@ -23,12 +23,35 @@ function addBooktoLibrary(title, author, pages, readNotread){
     myLibrary.push(newBook)
 }
 
+function display(){
+    const displayedBooks = document.querySelectorAll('.mybooks')
+    displayedBooks.forEach((book) => book.remove())
+    let x = myLibrary.length -1 ;
+    for (x; x >= 0; x--){
+        let place = myLibrary[x]
+        wrapper = createWrapper(myLibrary[x])
+        for (item in place) {
+            appendBooks(myLibrary[x], place[item], wrapper)
+        }
+    }
+}
 
-function createWrapper(){
+let splicePlace = []
+function createWrapper(item){
         const wrapper = document.createElement("section");
         wrapper.classList.add("mybooks");
         bookTable.appendChild(wrapper);
         const checkbox = document.createElement('input');
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked){
+                splicePlace.push(myLibrary.indexOf(item))
+            }
+            else {
+                let index = splicePlace.indexOf(myLibrary.indexOf(item))
+                splicePlace.splice(index, 1)
+            }
+    
+    })
         checkbox.type = "checkbox";
         checkbox.classList.add('id','checkbox')
         wrapper.appendChild(checkbox)
@@ -36,14 +59,22 @@ function createWrapper(){
 }
 
 
-function appendBooks(value, wrapper){
-    console.log(value)
+function appendBooks(item, value, wrapper){
     if (value == 'Read'|| value == 'Not Read'){
             const readButton = document.createElement("button")
             readButton.classList.add('readButtons')
             readButton.textContent = value;
             value == 'Read' ?  readButton.style.background = 'green' :  readButton.style.background = 'red';
             wrapper.appendChild(readButton)
+            readButton.addEventListener('click', function(){
+                if (item.read == 'Read'){
+                    item.read = 'Not Read'
+                }
+                else{
+                    item.read = 'Read'
+                }
+                display()
+            })
     }
     else{
         const bookDetail = document.createElement("span")
@@ -62,38 +93,20 @@ function clearForm(){
      }
      e.preventDefault()
      addBooktoLibrary(title.value, author.value, pages.value, readNotread.value)
-     let libraryBook = [title.value, author.value, pages.value, readNotread.value]
-     console.log(libraryBook)
-     let wrapper = createWrapper();
-     libraryBook.forEach((value) => appendBooks(value, wrapper))
+     display()
      clearForm()
      
     })
 
+let deleteClicked = false;
  deleteIt.addEventListener('click', function() {
-    const x = document.querySelectorAll(".checkbox")
-    x.forEach(deleteEntry)
+    splicePlace.forEach((place) => {
+        myLibrary.splice(place, 1)
+    })
+    display()
  })
 
- function deleteEntry(item){
-    if (item.checked == true){
-        item.parentNode.remove()
-    }
- }
 
-document.addEventListener('click',function(e){
-    if(e.target && e.target.className== 'readButtons'){
-        console.log(e.target.textContent)
-        if(e.target.textContent == 'Read'){
-            e.target.textContent = 'Not Read'
-            e.target.style.background = 'red'
-        }
-            
-        else{
-            e.target.style.background = 'green'
-            e.target.textContent = 'Read'
-            e.target.style.border = 'solid 1px green'
-            
-        }
-     }
- });
+ function deleteEntry(item){
+    deleteClicked = true;
+ }
