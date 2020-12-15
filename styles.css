@@ -76,7 +76,8 @@ h1 {
   font-weight: 700;
 }
 
-.mybooks {
+.mybooks,
+.headerBookl {
   width: 80vw;
   border-bottom: 1px lightgray solid;
   margin: auto;
@@ -87,7 +88,8 @@ h1 {
   gap: 20px;
   grid-template-columns: 15px 2fr 2fr 1fr 2fr;
 }
-.mybooks > * {
+.mybooks > *,
+.headerBookl > * {
   align-self: center;
 }
 
@@ -118,9 +120,6 @@ h1 {
   }
   .textInput {
     flex: 1;
-  }
-  .mybooks {
-    grid-template-columns: 15px 2fr 2fr 1fr 1fr;
   }
 
   .numbers {
