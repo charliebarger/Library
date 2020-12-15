@@ -21,19 +21,8 @@ function Book(author, title, pages, read){
 function addBooktoLibrary(title, author, pages, readNotread){
     let newBook = new Book(title, author, pages, readNotread);
     myLibrary.push(newBook)
-    loopArray()
-    
 }
 
-function loopArray(){
-    let wrapper = createWrapper();
-
-    for (let key in myLibrary[placement]){
-        let value = myLibrary[placement][key]
-        appendBooks(key, value, wrapper)
-    }
-    placement++
-}
 
 function createWrapper(){
         const wrapper = document.createElement("section");
@@ -47,7 +36,7 @@ function createWrapper(){
 }
 
 
-function appendBooks(key, value, wrapper){
+function appendBooks(value, wrapper){
     console.log(value)
     if (value == 'Read'|| value == 'Not Read'){
             const readButton = document.createElement("button")
@@ -73,8 +62,13 @@ function clearForm(){
      }
      e.preventDefault()
      addBooktoLibrary(title.value, author.value, pages.value, readNotread.value)
+     let libraryBook = [title.value, author.value, pages.value, readNotread.value]
+     console.log(libraryBook)
+     let wrapper = createWrapper();
+     libraryBook.forEach((value) => appendBooks(value, wrapper))
      clearForm()
- })
+     
+    })
 
  deleteIt.addEventListener('click', function() {
     const x = document.querySelectorAll(".checkbox")
