@@ -1,5 +1,4 @@
 let bookTable = document.querySelector(".bookTable")
-let myLibrary = []
 const title = document.getElementById('title');
 const author = document.getElementById('author');
 const pages = document.getElementById('pages');
@@ -9,6 +8,13 @@ let placement = 0;
 const deleteIt = document.getElementById("delete")
 let readbuttons;
 let wrapper;
+
+let myLibrary = localStorage.getItem('library')
+  ? JSON.parse(localStorage.getItem('library'))
+  : []
+
+localStorage.setItem('library', JSON.stringify(myLibrary))
+const data = JSON.parse(localStorage.getItem('library'))
 
 function Book(author, title, pages, read){
     this.author = author;
@@ -23,15 +29,18 @@ function addBooktoLibrary(title, author, pages, readNotread){
     myLibrary.push(newBook)
 }
 
+
 function display(){
+    localStorage.clear()
+    localStorage.setItem('library', JSON.stringify(myLibrary))
     const displayedBooks = document.querySelectorAll('.mybooks')
     displayedBooks.forEach((book) => book.remove())
     let x = myLibrary.length -1 ;
     for (x; x >= 0; x--){
-        let place = myLibrary[x]
+        let bookPosition = myLibrary[x]
         wrapper = createWrapper(myLibrary[x])
-        for (item in place) {
-            appendBooks(myLibrary[x], place[item], wrapper)
+        for (item in bookPosition) {
+            appendBooks(bookPosition, bookPosition[item], wrapper)
         }
     }
 }
@@ -106,7 +115,6 @@ let deleteClicked = false;
     display()
  })
 
-
- function deleteEntry(item){
-    deleteClicked = true;
- }
+ data.forEach((item) => {
+  display()
+})
