@@ -13,47 +13,51 @@
         rel="stylesheet">
 </head>
 <body>
-    <h1>Virtual Library</h1>
-    <form action="">
-    <section class="newBookinputs">
-        <div class="textInput bookInput">
-            <span>Title</span>
-            <input type="text" id="title" required>
-        </div>
-        <div class="textInput authorInput">
-            <span>Author</span>
-            <input type="text" id="author" required>
-        </div>
-        <div class="numberInput">
-            <div class="numbers">
+    <header>
+        <h1>Virtual Library</h1>
+    </header>
+    <main>
+        <form action="">
+            <section class="newBookinputs">
+                <div class="textInput bookInput">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="textInput authorInput">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" required>
+                </div>
+                <div class="numberInput">
+                    <div class="numbers">
+                        <label for= "pages">pages</label>
+                        <input type="number" id="pages" required>
+                    </div>
+                    <div>
+                        <label for="readNotread">Status</label>
+                        <select name="Status" id="readNotread">
+                            <option value="Read">Read</option>
+                            <option value="Not Read">Not Read</     option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <div class="submitbutton">
+                <input class= "button1" type="submit"   id="submitIt"     value="Submit">
+            </div>
+        </form>
+        <section class="headerBook">
+                <span></span>
+                <span>Title</span>
+                <span>Author</span>
                 <span>Pages</span>
-                <input type="number" id="pages" required>
-            </div>
-            <div>
-                <label for="Status">Status</label>
-                <select name="Status" id="readNotread">
-                    <option value="Read">Read</option>
-                    <option value="Not Read">Not Read</option>
-                </select>
-            </div>
+                <span>Status</span>
+        </section>
+        <section class="bookTable">
+        </section>
+        <div class="submitbutton">
+            <button id= "delete" class="delete  button1">Delete</    button>
         </div>
-    </section>
-    <div class="submitbutton">
-        <input class= "button1" type="submit" id="submitIt" value="Submit">
-    </div>
-</form>
-<section class=" bookheader headerBookl">
-        <span></span>
-        <span>Title</span>
-        <span>Author</span>
-        <span>Pages</span>
-        <span>Status</span>
-</section>
-<section class="bookTable">
-</section>
-<div class="submitbutton">
-    <button id= "delete" class="delete button1">Delete</button>
-</div>
+    </main>
 </body>
 <script src="./scripts.js"></script>
 </html>
