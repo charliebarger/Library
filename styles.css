@@ -21,6 +21,11 @@ body {
   width: 20px;
 }
 
+.mybooks {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 h1 {
   margin-top: 0px;
   text-align: center;
@@ -96,21 +101,20 @@ h1 {
   margin-top: 0px;
   display: grid;
   gap: 20px;
-  grid-template-columns: 15px 2fr 2fr 1fr 2fr;
-}
-
-.mybooks > *,
-.headerBook > * {
-  align-self: center;
+  justify-content: center;
+  grid-template-columns: 15px 2fr 2fr 1fr 1fr;
 }
 
 .readButtons {
+  word-break: normal;
+  font-size: 14px;
   padding: 0.75vw 1.5vw;
   justify-self: start;
   border-radius: 5px;
   background-color: red;
   color: white;
   border: red solid 1px;
+  margin: auto 0px;
 }
 
 .delete {
@@ -169,9 +173,17 @@ h1 {
     width: 2px !important;
   }
 }
-#pages {
-  width: 100%;
-}
-.numberInput > div {
-  width: 20px;
+
+@media screen and (max-width: 525px) {
+  .mybooks,
+  .headerBook {
+    width: 90vw;
+    padding: 10px;
+    gap: 20px;
+    grid-template-columns: 5px minmax(0, 2fr) minmax(0, 2fr) 1fr 2fr;
+  }
+  .mybooks > span,
+  .mybooks > button {
+    font-size: 14px;
+  }
 }
