@@ -14,6 +14,10 @@ body {
   padding: 5vw;
 }
 
+.mybooks > input {
+  margin: auto;
+}
+
 #pages {
   width: 100%;
 }
