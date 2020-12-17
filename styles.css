@@ -103,9 +103,14 @@ h1 {
   padding: 20px;
   margin-top: 0px;
   display: grid;
-  grid-template-columns: 5px minmax(0, 2fr) minmax(0, 2fr) 1fr 2fr;
+  grid-template-columns: 5px minmax(0, 2fr) minmax(0, 2fr) 1fr 1fr;
   gap: 20px;
   justify-content: center;
+}
+
+.mybooks {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .readButtons {
