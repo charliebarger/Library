@@ -26,7 +26,6 @@ body {
 }
 
 .mybooks {
-  word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
@@ -104,9 +103,9 @@ h1 {
   padding: 20px;
   margin-top: 0px;
   display: grid;
+  grid-template-columns: 5px minmax(0, 2fr) minmax(0, 2fr) 1fr 2fr;
   gap: 20px;
   justify-content: center;
-  grid-template-columns: 15px 2fr 2fr 1fr 1fr;
 }
 
 .readButtons {
@@ -184,7 +183,6 @@ h1 {
     width: 90vw;
     padding: 10px;
     gap: 20px;
-    grid-template-columns: 5px minmax(0, 2fr) minmax(0, 2fr) 1fr 2fr;
   }
   .mybooks > span,
   .mybooks > button {
