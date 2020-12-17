@@ -14,6 +14,13 @@ body {
   padding: 5vw;
 }
 
+#pages {
+  width: 100%;
+}
+.numberInput > div {
+  width: 20px;
+}
+
 h1 {
   margin-top: 0px;
   text-align: center;
@@ -40,10 +47,12 @@ h1 {
 .newBookinputs > .textInput > * {
   flex: 1;
 }
+.numbers {
+  margin-right: 20px;
+}
 
 .numberInput {
   display: flex;
-  gap: 20px;
 }
 
 .numberInput > div {
@@ -139,8 +148,10 @@ h1 {
   }
 
   .numberInput {
-    width: 100px;
     flex: 1;
+  }
+  .numberInput > div {
+    width: 2px;
   }
 
   .submitbutton {
@@ -154,13 +165,14 @@ h1 {
   .newBookinputs > .bookInput {
     margin-left: 0px;
   }
-}
 
-@media screen and (max-width: 500px) {
-  #pages {
-    width: 100%;
+  #readNOtread {
+    width: 2px !important;
   }
-  .numberInput > div {
-    min-width: 1px;
-  }
+}
+#pages {
+  width: 100%;
+}
+.numberInput > div {
+  width: 20px;
 }
