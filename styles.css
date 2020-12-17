@@ -117,6 +117,8 @@ h1 {
   background-color: green;
   border: solid green 1px;
 }
+.numbers {
+}
 
 @media screen and (min-width: 700px) {
   .newBookinputs {
@@ -128,6 +130,7 @@ h1 {
   }
 
   .numbers {
+    border: red solid 1px;
     width: 20%;
   }
 
@@ -150,5 +153,14 @@ h1 {
 
   .newBookinputs > .bookInput {
     margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #pages {
+    width: 100%;
+  }
+  .numberInput > div {
+    min-width: 1px;
   }
 }
